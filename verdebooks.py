@@ -1821,4 +1821,4 @@ if __name__=="__main__":
     # #http_server = WSGIServer(('', 7900),app)
     # http_server.serve_forever()
     #context = ('/etc/letsencrypt/live/verdebooks.com/fullchain.pem','/etc/letsencrypt/live/verdebooks.com/privkey.pem')
-    # app.run(port=7900)
+    app.run()

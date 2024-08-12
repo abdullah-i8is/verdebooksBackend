@@ -32,6 +32,7 @@ app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = 'secret123123'
 app.config['SESSION_TYPE'] = 'filesystem'
+app.secret_key="Infiniti123"
 
 
 
@@ -1803,10 +1804,10 @@ def delstubtransaction():
 
 # RUN APPLICATION
 
-if __name__=="__main__":
+if __name__ == "__main__":
+    app.run(debug=True)
     # db, cursor = database()
     #gevent.get_hub().SYSTEM_ERROR = BaseException
-    app.secret_key="Infiniti123"
     print("server is running on 7900")
     # #context=('cert.pem','privkey.pem')
     # #app.run(port=7900, debug=True, host='0.0.0.0', ssl_context=context, threaded=True)
@@ -1821,4 +1822,4 @@ if __name__=="__main__":
     # #http_server = WSGIServer(('', 7900),app)
     # http_server.serve_forever()
     #context = ('/etc/letsencrypt/live/verdebooks.com/fullchain.pem','/etc/letsencrypt/live/verdebooks.com/privkey.pem')
-    app.run()
+    # app.run()

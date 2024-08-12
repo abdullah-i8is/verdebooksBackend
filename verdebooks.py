@@ -517,7 +517,6 @@ def login():
     query="select id,password,organization from usersdata where email=%s"
     cursor.execute(query,(data["email"],))
     result=cursor.fetchone()
-    response=""
     if result:
         if result[1]==data["password"]:
             response={"response":"Success","company":result[2], "id":result[0]}

@@ -1803,6 +1803,11 @@ def delstubtransaction():
             return jsonify({"response": "Record not found"})
 
 # RUN APPLICATION
+@app.route("/", methods=["GET"])
+def org():
+    # Your existing code here
+    return jsonify({"message": "Hello from Vercel!"})
+
 
 if __name__ == "__main__":
     app.run(debug=True)

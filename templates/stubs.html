@@ -1,0 +1,36 @@
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+<style>
+    @media print{
+    html, body{
+        height:99%;
+        page-break-before:avoid;
+        page-break-after:avoid;
+    }
+    }
+    @page{
+        size:auto;margin:0mm;
+    }
+</style>
+<body style="background:#c5c5c5;" id="multiStubs">
+    {% for i in stubs %}
+    <iframe width="850" height="1100px" src="https://verdebooks.com:7900/api/printMultipleStub/{{i}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+    {% endfor %}
+    <!--<iframe width="850" height="1100px" src="https://verdebooks.com:7900/api/printStub/1368" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+    <iframe width="850" height="1100px" src="https://verdebooks.com:7900/api/printStub/1369" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>-->
+</body>
+<script>
+    //html2canvas(document.getElementById("multiStubs")).then((canvas) => {let a = document.createElement("a");a.download = "stub.png";a.href = canvas.toDataURL("image/png");a.click();});
+    window.print();
+</script>
+</html>
+{% endblock %}

@@ -1,0 +1,31 @@
+import pandas as pd
+import mysql.connector as mysql
+
+db_name = "verdebooks"
+db_password = "sohaib023612"
+db_user = "verdebook"
+db_host = "Localhost"
+
+def dbAuth():
+    db = mysql.connect(host=db_host, user=db_user, passwd=db_password, database=db_name)
+    cursor=db.cursor(buffered=True)
+    return db,cursor
+
+def storeEmployees(data):
+    db,cursor=dbAuth()
+    query="insert into employee(name,jobTitle,status,hireDatedob,workingLocation,accountHolder,bankName,accountNumber,branchName,bankLocation,address,town,postalCode,phn,phn2,gendernotes,mi,payRate,payTypevacPolicy,deduction,paymentMethod,email) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    values=()
+    for i in range(len(data["name"])):
+        print(data["name"][i])
+    #cursor.execute(query,values)
+    #db.commit()
+
+data=pd.read_csv("employeeData.csv")
+filter={}
+filter['name']=data['Name (full)'].tolist()
+filter['address']=data['home adress'].tolist()
+filter['phn']=data['Contact number'].tolist()
+filter['company']=data['Company'].tolist()
+filter['payRate']=data['Payrate'].tolist()
+
+storeEmployees(filter)

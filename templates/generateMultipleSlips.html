@@ -1,0 +1,428 @@
+{% block body %}
+<html>
+<head>
+<title>Generate Slip</title>
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style type="text/css">
+body { font-family: Arial; font-size: 17.0px }
+.pos { position: absolute; z-index: 0; left: 0px; top: 0px }
+</style>
+</head>
+<body id="stub">
+<nobr><nowrap>
+<div>
+<div class="pos" id="_0:0" style="top:0">
+<img name="_1100:850" src="/static/page_001.jpg" height="1100" width="850" border="0" usemap="#Map">
+<div class="pos" id="_107:55" style="top:55;left:107">
+<span id="_13.5" style=" font-family:Arial; font-size:13.5px; color:#000000">
+PEEL HR LIMITED </span>
+</div>
+<div class="pos" id="_107:71" style="top:71;left:107">
+<span id="_13.5" style=" font-family:Arial; font-size:13.5px; color:#000000">
+2715 GOREWAY DRIVE </span>
+</div>
+<div class="pos" id="_107:87" style="top:87;left:107">
+<span id="_13.5" style=" font-family:Arial; font-size:13.5px; color:#000000">
+UNIT 1A-17</span>
+</div>
+<div class="pos" id="_107:104" style="top:104;left:107">
+<span id="_13.5" style=" font-family:Arial; font-size:13.5px; color:#000000">
+MISSISSAUGA ON L6A3RI</span>
+</div>
+<div class="pos" id="_634:135" style="top:135;left:634">
+<span id="_13.5" style=" font-family:Arial; font-size:13.5px; color:#000000">
+Pay Stub Detail </span>
+</div>
+<div class="pos" id="_609:153" style="top:153;left:609">
+<span id="payDate" style=" font-family:Arial; font-size:13.5px; color:#000000">
+{{stub["payDateTitle"]}}</span>
+</div>
+<div class="pos" id="_623:171" style="top:171;left:620">
+<span id="netPay" style=" font-family:Arial; font-size:13.5px; color:#000000">
+{{stub["netPayTitle"]}}</span>
+</div>
+<div class="pos" id="_107:203" style="top:203;left:107">
+<span id="name" style=" font-family:Arial; font-size:14.0px; color:#000000">
+{{stub["name"]}}
+</span>
+</div>
+<div class="pos" id="_107:222" style="top:222;left:107">
+<span id="address" style=" font-family:Arial; font-size:13.4px; color:#000000">
+{{stub["address"]}}</span>
+</div>
+<div class="pos" id="_107:241" style="top:241;left:107">
+<span id="town" style=" font-family:Arial; font-size:13.4px; color:#000000">
+{{stub["town"]}}</span>
+</div>
+<div class="pos" id="_51:382" style="top:382;left:51">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+EMPLOYER</span>
+</div>
+<div class="pos" id="_440:382" style="top:382;left:440">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+PAY PERIOD</span>
+</div>
+<div class="pos" id="_51:396" style="top:396;left:51">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+PEEL HR LIMITED</span>
+</div>
+<div class="pos" id="_440:396" style="top:396;left:440">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Period Beginning</span>
+</div>
+<div class="pos" id="_643:396" style="top:396;left:643">
+<span id="periodStart" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["periodStart"]}}</span>
+</div>
+<div class="pos" id="_51:410" style="top:410;left:51">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+2715 GOREWAY DRIVE </span>
+</div>
+<div class="pos" id="_440:410" style="top:410;left:440">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Period Ending:</span>
+</div>
+<div class="pos" id="_643:410" style="top:410;left:643">
+<span id="periodEnd" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["periodEnd"]}}</span>
+</div>
+<div class="pos" id="_51:424" style="top:424;left:51">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+UNIT 1A-17 </span>
+</div>
+<div class="pos" id="_440:424" style="top:424;left:440">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Pay Date:</span>
+</div>
+<div class="pos" id="_643:424" style="top:424;left:643">
+<span id="payDate2" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["payDate"]}}</span>
+</div>
+<div class="pos" id="_51:439" style="top:439;left:51">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+MISSISSAUGA ON L6A3RI </span>
+</div>
+<div class="pos" id="_440:440" style="top:440;left:440">
+<span id="" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Total Hours:</span>
+</div>
+<div class="pos" id="_674:440" style="top:440;left:674">
+<span id="totalHour" style=" font-family:Arial; font-size:12.1px; color:#000000;margin-left: -30px;">
+{{stub["totalHours"]}}</span>
+</div>
+<div class="pos" id="_51:481" style="top:481;left:51">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+EMPLOYEE</span>
+</div>
+<div class="pos" id="_51:497" style="top:497;left:51">
+<span id="name2" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["name"]}}
+</span>
+</div>
+<div class="pos" id="_51:511" style="top:511;left:51">
+<span id="address2" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["address"]}}</span>
+</div>
+<div class="pos" id="_51:525" style="top:525;left:51">
+<span id="town2" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["town"]}}</span>
+</div>
+<div class="pos" id="_51:581" style="top:581;left:51">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+BENEFITS</span>
+</div>
+<div class="pos" id="_229:581" style="top:581;left:229">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+Accrued</span>
+</div>
+<div class="pos" id="_321:581" style="top:581;left:321">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+Used</span>
+</div>
+<div class="pos" id="_370:581" style="top:581;left:370">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+Available</span>
+</div>
+<div class="pos" id="_51:596" style="top:596;left:51">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Vacation</span>
+</div>
+<div class="pos" id="_255:596" style="top:596;left:255">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+0.00</span>
+</div>
+<div class="pos" id="_327:596" style="top:596;left:327">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+0.00</span>
+</div>
+<div class="pos" id="_400:596" style="top:596;left:400">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+0.00</span>
+</div>
+<div class="pos" id="_440:603" style="top:603;left:440">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+NET PAY:</span>
+</div>
+<div class="pos" id="_750:603" style="top:603;left:750">
+<span id="netPay3" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["netPay"]}}</span>
+</div>
+<div class="pos" id="_51:650" style="top:650;left:51">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+MEMO:</span>
+</div>
+<div class="pos" id="_51:731" style="top:731;left:51">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+<U>P</U><U>A</U><U>Y</U></span>
+</div>
+<div class="pos" id="_178:731" style="top:731;left:178">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+<U>H</U><U>o</U><U>u</U><U>r</U><U>s</U></span>
+</div>
+<div class="pos" id="_178:731" style="top:731;left:220">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+<U>R</U><U>a</U><U>t</U><U>e</U></span>
+</div>
+<div class="pos" id="_287:731" style="top:731;left:278">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+<U>C</U><U>u</U><U>r</U><U>r</U><U>e</U><U>n</U><U>t</U></span>
+</div>
+<div class="pos" id="_381:731" style="top:731;left:370">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+<U>Y</U><U>T</U><U>D</U></span>
+</div>
+<div class="pos" id="_438:731" style="top:731;left:438">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+DEDUCTIONS</span>
+</div>
+<div class="pos" id="_679:731" style="top:731;left:679">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+Current</span>
+</div>
+<div class="pos" id="_770:731" style="top:731;left:770">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+YTD</span>
+</div>
+<div class="pos" id="_48:748" style="top:748;left:48">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Regular Pay </span>
+</div>
+<div class="pos" id="_183:748" style="top:748;left:180">
+<span id="regularPayHours" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["regularPayCurrentHours"]}}</span>
+</div>
+<div class="pos" id="_183:748" style="top:748;left:220">
+<span id="regularPayHours" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["currentRegularPayRate"]}}</span>
+</div>
+<div class="pos" id="_296:748" style="top:748;left:278">
+<span id="regularPayRateCurrent" style="font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["currentRegularPay"]}}
+</span>
+</div>
+<div class="pos" id="_362:748" style="top:748;left:370">
+<span id="regularPayRateYtd" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["currentRegularPayYTD"]}}</span>
+</div>
+<div class="pos" id="_48:762" style="top:762;left:48">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Vacation Pay </span>
+</div>
+<div class="pos" id="_210:761" style="top:761;left:180">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+-</span>
+</div>
+<div class="pos" id="_253:762" style="top:762;left:220">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+-</span>
+</div>
+<div class="pos" id="_302:761" style="top:761;left:278">
+<span id="vacationPayCurrent" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["vacCurrentPay"]}}</span>
+</div>
+<div class="pos" id="_379:761" style="top:761;left:370">
+<span id="vacationPayYtd" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["vacPayYTD"]}}</span>
+</div>
+<div class="pos" id="_48:775" style="top:775;left:48">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Stat Holiday Pay</span>
+</div>
+<div class="pos" id="_210:775" style="top:775;left:180;">
+<span id="statHolidayPayRate" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["statCurrentHours"]}}</span>
+</div>
+<div class="pos" id="_309:775" style="top:775;left:220;">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["statCurrentRate"]}}</span>
+</div>
+<div class="pos" id="_309:775" style="top:775;left:278;">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["statCurrentPay"]}}</span>
+</div>
+<div class="pos" id="_379:775" style="top:775;left:370;">
+<span id="statHolidayPayTotal" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["statCurrentYTD"]}}</span>
+</div>
+<div class="pos" id="_48:775" style="top:789;left:48">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+OT Hours Pay</span>
+</div>
+<div class="pos" id="_210:775" style="top:789;left:180;">
+<span id="statHolidayPayRate" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["OTHours"]}}</span>
+</div>
+<div class="pos" id="_309:775" style="top:789;left:220;">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["OTCurrentRate"]}}</span>
+</div>
+<div class="pos" id="_309:775" style="top:789;left:278;">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["OTCurrentPay"]}}</span>
+</div>
+<div class="pos" id="_379:775" style="top:789;left:370;">
+<span id="statHolidayPayTotal" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["OTYTD"]}}</span>
+</div>
+<div class="pos" id="_48:775" style="top:803;left:48">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Shift Premium</span>
+</div>
+<div class="pos" id="_210:775" style="top:803;left:180;">
+<span id="statHolidayPayRate" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["SPHours"]}}</span>
+</div>
+<div class="pos" id="_309:775" style="top:803;left:220;">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["SPCurrentRate"]}}</span>
+</div>
+<div class="pos" id="_309:775" style="top:803;left:278;">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["SPCurrentPay"]}}</span>
+</div>
+<div class="pos" id="_379:775" style="top:803;left:370;">
+<span id="statHolidayPayTotal" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["SPYTD"]}}</span>
+</div>
+<div class="pos" id="_51:898" style="top:898;left:51">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+<U>T</U><U>A</U><U>X</U><U>E</U><U>S</U></span>
+</div>
+<div class="pos" id="_287:898" style="top:898;left:287">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+<U>C</U><U>u</U><U>r</U><U>r</U><U>e</U><U>n</U><U>t</U></span>
+</div>
+<div class="pos" id="_382:898" style="top:898;left:382">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+<U>Y</U><U>T</U><U>D</U></span>
+</div>
+<div class="pos" id="_48:915" style="top:915;left:48">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Income Tax </span>
+</div>
+<div class="pos" id="_311:915" style="top:915;left:287">
+<span id="it" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["incomeTax"]}}</span>
+</div>
+<div class="pos" id="_380:915" style="top:915;left:380">
+<span id="itYtd" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["incomeTaxYTD"]}}</span>
+</div>
+<div class="pos" id="_442:914" style="top:914;left:442">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+SUMMARY</span>
+</div>
+<div class="pos" id="_647:914" style="top:914;left:647">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+Current</span>
+</div>
+<div class="pos" id="_761:914" style="top:914;left:761">
+<span id="_12.1" style="font-weight:bold; font-family:Arial; font-size:12.1px; color:#000000">
+YTD</span>
+</div>
+<div class="pos" id="_48:929" style="top:929;left:48">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Employment Insurance </span>
+</div>
+<div class="pos" id="_311:928" style="top:928;left:287">
+<span id="ei" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["ei"]}}</span>
+</div>
+<div class="pos" id="_380:928" style="top:928;left:380">
+<span id="eiYtd" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["eiYTD"]}}</span>
+</div>
+<div class="pos" id="_442:933" style="top:933;left:442">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Total Pay</span>
+</div>
+<div class="pos" id="_646:933" style="top:933;left:646">
+<span id="totalPay" style=" font-family:Arial; font-size:12.1px; color:#000000">
+${{stub["totalPayCurrent"]}}</span>
+</div>
+<div class="pos" id="_736:933" style="top:933;left:740">
+<span id="totalPayYtd" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+${{stub["totalPayYTD"]}}</span>
+</div>
+<div class="pos" id="_48:942" style="top:942;left:48">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Canada Pension Plan</span>
+</div>
+<div class="pos" id="_304:941" style="top:941;left:287">
+<span id="cpp" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+{{stub["CPP"]}}</span>
+</div>
+<div class="pos" id="_380:941" style="top:941;left:380">
+<span id="cppYtd" style=" font-family:Arial; font-size:12.1px; color:#000000">
+{{stub["CPPYTD"]}}</span>
+</div>
+<div class="pos" id="_442:947" style="top:947;left:442">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Taxes</span>
+</div>
+<div class="pos" id="_653:947" style="top:947;left:646">
+<span id="totalTaxCurrent" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+${{stub["totalTaxCurrent"]}}</span>
+</div>
+<div class="pos" id="_746:947" style="top:947;left:740">
+<span id="totalTaxYtd" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+${{stub["totalTaxYTD"]}}</span>
+</div>
+<div class="pos" id="_442:962" style="top:962;left:442">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+Deductions</span>
+</div>
+<div class="pos" id="_660:962" style="top:962;left:646">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000;">
+$0.00</span>
+</div>
+<div class="pos" id="_760:962" style="top:962;left:740">
+<span id="_12.1" style=" font-family:Arial; font-size:12.1px; color:#000000">
+$0.00</span>
+</div>
+<div class="pos" id="_437:992" style="top:992;left:437">
+<span id="_14.8" style="font-weight:bold; font-family:Arial; font-size:14.8px; color:#000000">
+NET PAY</span>
+</div>
+<div class="pos" id="_634:992" style="top:991;left:634">
+<span id="netPay2" style="font-weight:bold; font-family:Arial; font-size:16.1px; color:#000000">
+{{stub["netPay"]}}</span><a></a>
+</div>
+</div>
+</div>
+</nowrap></nobr>
+<script>
+// // Choose the element that our invoice is rendered in.
+// 	const element = document.getElementById('stub');
+// // Choose the element and save the PDF for our user.
+// 	html2pdf().from(element).save();
+    html2canvas(document.getElementById("_0:0")).then((canvas) => {let a = document.createElement("a");a.download = "stub.png";a.href = canvas.toDataURL("image/png");a.click();});
+</script>
+</body>
+</html>
+{% endblock %}

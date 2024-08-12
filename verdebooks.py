@@ -35,22 +35,22 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 
 
-db_name = "Verdebooksdb"
-db_password = "Hayat_3388171"
-db_user = "hayat"
-db_host = "ec2-15-222-247-146.ca-central-1.compute.amazonaws.com"
+# db_name = "Verdebooksdb"
+# db_password = "Hayat_3388171"
+# db_user = "hayat"
+# db_host = "ec2-15-222-247-146.ca-central-1.compute.amazonaws.com"
 
-
+# hello
 # db_name = "verdeinfiniti"
 # db_password = ""
 # db_user = "root"
 # db_host = "localhost"
 
 
-# db_name = "liveverde"
-# db_password = ""
-# db_user = "root"
-# db_host = "verdebooks.com"
+db_name = "Verdebooksin"
+db_password = "Hayat_admin123"
+db_user = "hayat"
+db_host = "35.183.134.169"
 
 CORS(app)
 

@@ -34,8 +34,6 @@ app.config['SECRET_KEY'] = 'secret123123'
 app.config['SESSION_TYPE'] = 'filesystem'
 app.secret_key="Infiniti123"
 
-
-
 # db_name = "Verdebooksdb"
 # db_password = "Hayat_3388171"
 # db_user = "hayat"
@@ -1801,16 +1799,14 @@ def delstubtransaction():
             return jsonify({"response": "Data Deleted successfully"})
         else:
             return jsonify({"response": "Record not found"})
-
 # RUN APPLICATION
 @app.route("/", methods=["GET"])
 def org():
     # Your existing code here
     return jsonify({"message": "Hello from Vercel!"})
+# RUN APPLICATION
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__=="__main__":
     # db, cursor = database()
     #gevent.get_hub().SYSTEM_ERROR = BaseException
     print("server is running on 7900")
@@ -1827,4 +1823,4 @@ if __name__ == "__main__":
     # #http_server = WSGIServer(('', 7900),app)
     # http_server.serve_forever()
     #context = ('/etc/letsencrypt/live/verdebooks.com/fullchain.pem','/etc/letsencrypt/live/verdebooks.com/privkey.pem')
-    # app.run()
+    app.run(port=7900)

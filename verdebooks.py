@@ -375,8 +375,8 @@ def allEmployees():
 
 # ADD EMPLOYEE
 
-@app.route("/api/addOrganization", methods=["GET", "POST"])
-def addOrganization():
+@app.route("/api/addOrganizationold", methods=["GET", "POST"])
+def addOrganizationold():
     db,cursor=database()
     data=request.form
     query0="select * from organization where org_name=%s"
@@ -402,6 +402,33 @@ def addOrganization():
         }
         return jsonify(response_data), 200
 
+
+@app.route("/api/addOrganization", methods=["GET", "POST"])
+def addOrganization():
+    db,cursor=database()
+    data=request.form
+    # query0="select * from organization where org_name=%s"
+    # cursor.execute(query0,(data["orgname"],))
+    # result0=cursor.fetchall()
+    
+    # print(result0)
+    # if result0:return jsonify({"response":"exist"})
+    # else:
+    query="INSERT INTO `organization`(`org_name`, `postal_code`, `street_address`, `city_Address`)  VALUES(%s,%s,%s,%s)"
+    values=( data["orgname"], data["postalcode"], data["street"], data["city"])
+    cursor.execute(query,values)
+    db.commit()
+    query2="Insert into `usersdata`(`email`, `password`, `status`, `organization`) values (%s,%s,%s,%s)"    
+    values2=(data['email'], data['password'], "verified", data['orgname'])
+    cursor.execute(query2, values2)
+    db.commit()
+# Assuming the operation was successful
+    response_data = {
+        "success": True,
+        "message": "Account created successfully!",
+        "data": None  # You can include any additional data here
+    }
+    return jsonify(response_data), 200
 
 @app.route("/api/addEmployee",methods=["GET","POST"])
 def addEmployee():
